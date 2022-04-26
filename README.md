@@ -24,7 +24,7 @@ func main() {
 	arr := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		ranges, err := range_parser.Parse(len(arr), r.Header.Get("Range"))
+		ranges, err := range_parser.Parse(int64(len(arr)), r.Header.Get("Range"))
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusBadRequest)
 			return
